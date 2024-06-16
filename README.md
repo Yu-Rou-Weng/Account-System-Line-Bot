@@ -4,7 +4,7 @@
 #### Group 1
 
 組員：
-唐磊　
+唐磊
 蔡怡葶
 翁愉媃
 林琛琛
@@ -28,12 +28,12 @@
 * LLM：選用Claude3生成式AI平台，用於提供預算建議等進階功能。
 
 ### (1) 系統架構規劃
-![螢幕擷取畫面 2024-06-16 140413](https://hackmd.io/_uploads/SkCwfb2B0.png)
+
+![Imgur Image](https://i.imgur.com/ZsYBiE4.png)
                   
 
 ### (2) 基於系統架構規劃之API流程設計構思
-![螢幕擷取畫面 2024-06-16 140439](https://hackmd.io/_uploads/B1hKMZnSR.png)
-
+![Imgur Image](https://i.imgur.com/ccuWBre.png)
 
 
 ### (3) TDD 實作概念:
