@@ -1,0 +1,8 @@
+flask
+python-dotenv
+psycopg2
+pytest
+psutil
+requests
+gevent
+locust
