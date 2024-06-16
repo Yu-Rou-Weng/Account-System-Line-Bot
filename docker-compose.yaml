@@ -1,0 +1,30 @@
+services:
+  backend:
+    image: 112_spring_software_testing/backend
+    container_name: backend
+    build: ./backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - database
+    networks:
+      hw_br:
+        ipv4_address: 172.21.0.101
+
+  database:
+    image: postgres
+    container_name: database
+    environment:
+      - POSTGRES_DB=accounting-app-db
+      - POSTGRES_USER=myAdmin
+      - POSTGRES_PASSWORD=mypassword
+    networks:
+      hw_br:
+        ipv4_address: 172.21.0.102
+
+networks:
+  hw_br:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
