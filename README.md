@@ -22,7 +22,7 @@
 * LineBot機器人開發：利用BDD框架，確保開發過程符合預期行為。
 * API server (Flask)：
     * Server 1：作為LineBot Webhook Endpoint，負責接收和回覆用戶透過Line發送的訊息。這個伺服器會維護一個有限狀態機，用於驗證訊息的正確性並將有效請求轉發給第二台伺服器。
-    * Server 72：作為邏輯處理中心，處理來自Server 1的請求，進行資料庫操作或調用外部API（如LLM）來完成業務邏輯。
+    * Server 2：作為邏輯處理中心，處理來自Server 1的請求，進行資料庫操作或調用外部API（如LLM）來完成業務邏輯。
 * 資料庫：選用PostgreSQL/sqlite3來儲存記帳資料。
 * 語音轉文字：使用Whisper實現語音輸入功能。
 * LLM：選用Claude3生成式AI平台，用於提供預算建議等進階功能。
@@ -49,13 +49,13 @@
 
 |  | API route | 功能敘述 |備註 |
 | -------- | -------- | -------- | --------|
-| 1    | POST /Transaction    | 紀錄一筆金額: 紀錄今日支出+今日收入     | 使用者: 紀錄 [食/衣/住/行] $800    Linebot: 紀錄一筆資料
-| 2    | GET /Transaction   | 查詢一筆金額: 查詢本日支出+本日收入   |使用者: 查詢今日收支    Linebot: 給一個 Line Bot Flex Message 讓使用者可以選 [食/衣/住/行]|
-| 3    | GET /Balance/Day    | 查詢當日的餘額    |使用者:  查詢20xx年x月餘額Linebot: 20xx年x月支出為:x元收入為:x元|
+| 1    | POST /Transaction    | 紀錄一筆金額: 紀錄今日支出+今日收入     | 1.使用者: 紀錄 [食/衣/住/行] $800<br />2.Linebot: 紀錄一筆資料
+| 2    | GET /Transaction   | 查詢一筆金額: 查詢本日支出+本日收入   |1.使用者: 查詢今日收支<br /> 2.Linebot: 給一個 Line Bot Flex Message 讓使用者可以選 [食/衣/住/行]|
+| 3    | GET /Balance/Day    | 查詢當日的餘額    |1.使用者:  查詢20xx年x月餘額<br /> 2.Linebot: <br />20xx年x月<br />支出為:x元<br />收入為:x元|
 | 4    | GET /Balance/Month    | 查詢月結餘    |     |
 | 5    |      | 串接 Google 試算表 API 計算收支、結餘    |     |
-| 6    |     | (Optional) 提供當月的支出和收入報告圓餅圖     |當月收支比例、依照食衣住行查看收支比|
-| 7    |     | (Optional)結合LLM，根據過去的收支狀況，提供使用者未來預算建議     |Prompt Template:收支比|
+| 6    |     | (Optional) 提供當月的支出和收入報告圓餅圖     |1.當月收支比例<br />2.依照食衣住行查看收支比|
+| 7    |     | (Optional)結合LLM，根據過去的收支狀況，提供使用者未來預算建議     |1.Prompt Template: 收支比<br />2.生成式AI API回覆: 建議的未來預算|
 
 
 
