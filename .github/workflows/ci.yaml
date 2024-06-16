@@ -2,7 +2,7 @@ name: Python application test with pytest and pylint
 
 on:
   push:
-    branches: [ pytest-collect ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
